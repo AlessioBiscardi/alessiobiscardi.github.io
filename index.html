@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Alessio Biscardi | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Fira+Code&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: linear-gradient(135deg, #111 0%, #222 50%, #111 100%);
+      overflow: hidden;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100vh;
+      color: white;
+      animation: fadeOnly 2s ease-in-out;
+    }
+
+    .glitch {
+      font-size: 2.5em;
+      font-family: 'Audiowide', sans-serif;
+      animation: glitch 8s infinite ease-in-out;
+      position: relative;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .glitch::before {
+      color: #f0f;
+      z-index: -1;
+      animation: glitch-anim 8s infinite linear alternate-reverse;
+    }
+
+    .glitch::after {
+      color: #0ff;
+      z-index: -2;
+      animation: glitch-anim2 8s infinite linear alternate-reverse;
+    }
+
+    @keyframes fadeOnly {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(2px, -2px); }
+      60% { transform: translate(-2px, -1px); }
+      80% { transform: translate(1px, 2px); }
+      100% { transform: translate(0); }
+    }
+
+    @keyframes glitch-anim {
+      0% { clip-path: inset(80% 0 0 0); transform: translate(-2px, 0); opacity: 1; }
+      10% { clip-path: inset(10% 0 85% 0); transform: translate(2px, 0); opacity: 0.8; }
+      20% { clip-path: inset(80% 0 0 0); transform: translate(-2px, 0); opacity: 1; }
+      30% { clip-path: inset(10% 0 85% 0); transform: translate(2px, 0); opacity: 0.7; }
+      40% { clip-path: inset(40% 0 40% 0); transform: translate(-1px, 0); opacity: 0.9; }
+      100% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 1; }
+    }
+
+    @keyframes glitch-anim2 {
+      0% { clip-path: inset(10% 0 85% 0); transform: translate(2px, 0); opacity: 1; }
+      10% { clip-path: inset(80% 0 0 0); transform: translate(-2px, 0); opacity: 0.8; }
+      20% { clip-path: inset(10% 0 85% 0); transform: translate(2px, 0); opacity: 1; }
+      30% { clip-path: inset(80% 0 0 0); transform: translate(-2px, 0); opacity: 0.7; }
+      40% { clip-path: inset(40% 0 40% 0); transform: translate(1px, 0); opacity: 0.9; }
+      100% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 1; }
+    }
+
+    .links {
+      margin-top: 20px;
+    }
+
+    .links a {
+      color: #58a6ff;
+      margin: 0 10px;
+      text-decoration: none;
+      text-shadow: 0 0 5px #00f7ff, 0 0 10px #00f7ff;
+      font-size: 1.5em;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .typewriter {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 6px solid white;
+      animation: blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: white; }
+    }
+  </style>
+</head>
+<body>
+  <div style="position: absolute; top: 20px; left: 20px; background-color: rgba(34,34,34,0.8); color: white; font-size: 0.9em; padding: 10px 15px; border-radius: 8px; font-family: 'Fira Code', monospace; z-index: 10;">
+    <strong>Certifications:</strong><br>
+    - CompTia Security+<br>
+    - LPI Linux Essentials 010-160
+  </div>
+  <div style="display: flex; align-items: center; justify-content: center; height: 100vh; width: 100vw; position: relative;">
+    <div id="chat-box" style="width: 240px; min-height: 200px; background-color: transparent; border: none; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; gap: 6px; font-family: 'Fira Code', monospace; padding-right: 20px; height: 100%; position: relative;">
+      <div id="divider-line" style="position: absolute; top: 50%; right: 10px; width: 1px; height: 200px; background-color: white; transform: translateY(-50%); z-index: 0; pointer-events: none;"></div>
+    </div>
+    <div class="container" style="flex-shrink: 0; position: relative; z-index: 1; transform: translateY(-10px);">
+      <h1 class="glitch" data-text="Alessio Biscardi" style="margin-bottom: 0.3em;">Alessio Biscardi</h1>
+      <div class="links">
+        <a href="https://alessio-biscardi.gitbook.io/x">Portfolio</a>
+        <a href="https://linkedin.com/in/siord" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const messages = [
+      "ciao sono siord",
+      "analizzo truffe finanziarie",
+      "ricerche OSINT avanzate",
+      "cybersecurity is not a joke"
+    ];
+
+    const box = document.getElementById("chat-box");
+    let index = 0;
+
+    function typeWriter(text, callback) {
+      let i = 0;
+      const line = document.createElement("div");
+      line.style.color = "white";
+      line.style.fontFamily = "'Fira Code', monospace";
+      line.style.fontSize = "0.9em";
+      line.style.direction = "rtl";
+      line.style.textAlign = "right";
+      if (box.lastChild && box.lastChild.classList) {
+        box.lastChild.classList.remove("typewriter");
+      }
+      line.classList.add("typewriter");
+      box.appendChild(line);
+
+      function type() {
+        if (i < text.length) {
+          line.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, 100);
+        } else {
+          callback();
+        }
+      }
+      type();
+    }
+
+    function addMessage() {
+      if ([...box.children].filter(child => child.id !== 'divider-line').length >= 4) {
+        const oldest = [...box.children].filter(child => child.id !== 'divider-line')[0];
+        if (oldest) box.removeChild(oldest);
+      }
+      typeWriter(messages[index], () => {
+        index = (index + 1) % messages.length;
+        setTimeout(addMessage, 3000);
+      });
+    }
+
+    addMessage();
+  </script>
+</body>
+</html>
