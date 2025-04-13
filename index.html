@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alessio Biscardi</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #ccc;
+      font-family: 'Share Tech Mono', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.imgur.com/N7ETz09.gif') repeat;
+      background-size: cover;
+      opacity: 0.05;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .header-terminal {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 1rem;
+      color: #b5f4ec;
+      z-index: 1;
+    }
+
+    .glitch {
+      font-size: 2rem;
+      color: #fff;
+      position: relative;
+      animation: glitch 1s infinite;
+      z-index: 1;
+    }
+
+    @keyframes glitch {
+      0% {
+        text-shadow: 2px 2px red;
+      }
+      50% {
+        text-shadow: -2px -2px blue;
+      }
+      100% {
+        text-shadow: 2px 2px red;
+      }
+    }
+
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 1;
+    }
+
+    img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #0ff;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      margin-top: 5px;
+      z-index: 1;
+    }
+
+    .links {
+      margin-top: 20px;
+      z-index: 1;
+    }
+
+    .links a {
+      color: #00ffff;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .links a:hover {
+      color: #ff00ff;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 0.8rem;
+      color: #555;
+      z-index: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header-terminal">&gt; $ cd /home/siord</div>
+
+  <img src="https://avatars.githubusercontent.com/u/79480015?v=4" alt="Profile Picture">
+  <div class="glitch">Alessio Biscardi</div>
+  <div class="subtitle">Pentester | OSINT Investigator | Reconnaise</div>
+
+  <div class="links">
+    <a href="https://hexsec.gitbook.io/siord" target="_blank">Portfolio</a>
+    <a href="https://www.linkedin.com/in/alessio-biscardi/" target="_blank">LinkedIn</a>
+  </div>
+
+  <footer>
+    &copy; 2024 Alessio Biscardi
+  </footer>
+</body>
+
+</html>
