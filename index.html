@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Alessio Biscardi | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Fira+Code&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: linear-gradient(135deg, #111 0%, #222 50%, #111 100%);
+      overflow: hidden;
+      font-family: 'Fira Code', monospace;
+    }
+    .container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100vh;
+      color: white;
+      animation: fadeOnly 2s ease-in-out;
+    }
+    .glitch {
+      font-size: 2.5em;
+      font-family: 'Audiowide', sans-serif;
+      position: relative;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    }
+    .glitch::before, .glitch::after {
+      content: "";
+      display: none;
+    }
+    @keyframes fadeOnly {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .buttons {
+      margin-top: 5px;
+      display: flex;
+      gap: 15px;
+    }
+    .buttons a {
+      padding: 6px 14px;
+      background-color: #1f262c;
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+      border-radius: 6px;
+      font-weight: bold;
+      box-shadow: 0 0 5px #1f262c, 0 0 10px #1f262c33;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .buttons a:hover {
+      background-color: #2a333a;
+      transform: translateY(-2px);
+    }
+    .typewriter {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 6px solid white;
+      animation: blink-caret 0.75s step-end infinite;
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: white; }
+    }
+    .robot-helper {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 40px;
+      width: 200px;
+      z-index: 15;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      animation: fadeInRobot 1s ease forwards;
+      animation-delay: 1s;
+    }
+    @keyframes fadeInRobot {
+      to { opacity: 1; }
+    }
+    .robot-helper .bubble {
+      position: relative;
+      background-color: white;
+      color: black;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8em;
+      padding: 8px 14px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      margin-bottom: 6px;
+      width: 100%;
+      text-align: left;
+      min-height: 24px;
+      opacity: 0;
+      animation: fadeInBubble 0.5s ease forwards;
+      animation-delay: 2s;
+    }
+    @keyframes fadeInBubble {
+      to { opacity: 1; }
+    }
+    .robot-helper .bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 20px;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid white;
+    }
+  </style>
+</head>
+<body>
+  <!-- Corpo della pagina mantenuto invariato -->
+</body>
+</html>
