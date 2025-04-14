@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Alessio Biscardi | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Fira+Code&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: linear-gradient(135deg, #111 0%, #222 50%, #111 100%);
+      overflow: hidden;
+      font-family: 'Fira Code', monospace;
+    }
+    .container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100vh;
+      color: white;
+      animation: fadeOnly 2s ease-in-out;
+    }
+    .glitch {
+      font-size: 2.5em;
+      font-family: 'Audiowide', sans-serif;
+      position: relative;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    }
+    .glitch::before, .glitch::after {
+      content: "";
+      display: none;
+    }
+    @keyframes fadeOnly {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .buttons {
+      margin-top: 5px;
+      display: flex;
+      gap: 15px;
+    }
+    .buttons a {
+      padding: 6px 14px;
+      background-color: #1f262c;
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+      border-radius: 6px;
+      font-weight: bold;
+      box-shadow: 0 0 5px #1f262c, 0 0 10px #1f262c33;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .buttons a:hover {
+      background-color: #2a333a;
+      transform: translateY(-2px);
+    }
+    .typewriter {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 6px solid white;
+      animation: blink-caret 0.75s step-end infinite;
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: white; }
+    }
+    .robot-helper {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 40px;
+      width: 200px;
+      z-index: 15;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      animation: fadeInRobot 1s ease forwards;
+      animation-delay: 1s;
+    }
+    @keyframes fadeInRobot {
+      to { opacity: 1; }
+    }
+    .robot-helper .bubble {
+      position: relative;
+      background-color: white;
+      color: black;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8em;
+      padding: 8px 14px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      margin-bottom: 6px;
+      width: 100%;
+      text-align: left;
+      min-height: 24px;
+      opacity: 0;
+      animation: fadeInBubble 0.5s ease forwards;
+      animation-delay: 2s;
+    }
+    @keyframes fadeInBubble {
+      to { opacity: 1; }
+    }
+    .robot-helper .bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 20px;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid white;
+    }
+  </style>
+</head>
+<body>
+  <div style="position: absolute; top: 80px; left: 120px; background-color: rgba(34,34,34,0.8); color: white; font-size: 0.9em; padding: 10px 15px; border-radius: 8px; font-family: 'Fira Code', monospace; z-index: 10;">
+    <strong>Certifications:</strong><br>
+    - CompTia Security+<br>
+    - LPI Linux Essentials 010-160
+  </div>
+  <div style="display: flex; align-items: center; justify-content: center; height: 100vh; width: 100vw; position: relative;">
+    <div id="chat-box" style="width: 240px; min-height: 200px; background-color: transparent; border: none; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; gap: 6px; font-family: 'Fira Code', monospace; padding-right: 20px; height: 100%; position: relative;">
+      <div id="divider-line" style="position: absolute; top: 50%; right: 10px; width: 1px; height: 200px; background-color: white; transform: translateY(-50%); z-index: 0; pointer-events: none;"></div>
+    </div>
+    <div class="container" style="flex-shrink: 0; position: relative; z-index: 1; transform: translateY(-10px);">
+      <h1 class="glitch" data-text="Alessio Biscardi">Alessio Biscardi</h1>
+      <div class="buttons">
+        <a href="https://alessio-biscardi.gitbook.io/x">Portfolio</a>
+        <a href="https://www.linkedin.com/in/alessiobiscardi96/">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+  <div class="robot-helper">
+    <div class="bubble" id="robot-text"></div>
+    <div class="bubble" id="robot-text-2" style="display: none;"></div>
+    <div class="bubble" id="robot-text-3" style="display: none;"></div>
+    <div style="margin-top: 6px;"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="robot" style="width: 60px; height: auto;"></div>
+  </div>
+  <script>
+    const messages = [
+      "accesso ai log in corso...",
+      "analisi dominio completata ✔️",
+      "vulnerabilità identificata 🔍",
+      "brute-force in corso ⏳",
+      "reverse shell stabilita 💻"
+    ];
+
+    const box = document.getElementById("chat-box");
+    let index = 0;
+
+    function typeWriter(text, callback) {
+      let i = 0;
+      const line = document.createElement("div");
+      line.style.color = "white";
+      line.style.fontFamily = "'Fira Code', monospace";
+      line.style.fontSize = "0.9em";
+      line.style.direction = "ltr";
+      line.style.textAlign = "left";
+      if (box.lastChild && box.lastChild.classList) {
+        box.lastChild.classList.remove("typewriter");
+      }
+      line.classList.add("typewriter");
+      box.appendChild(line);
+
+      function type() {
+        if (i < text.length) {
+          line.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, 60);
+        } else {
+          callback();
+        }
+      }
+      type();
+    }
+
+    function addMessage() {
+      if ([...box.children].filter(child => child.id !== 'divider-line').length >= 4) {
+        const oldest = [...box.children].filter(child => child.id !== 'divider-line')[0];
+        if (oldest) box.removeChild(oldest);
+      }
+      typeWriter(messages[index], () => {
+        index = (index + 1) % messages.length;
+        setTimeout(addMessage, 1000);
+      });
+    }
+
+    addMessage();
+
+    setTimeout(() => {
+      const bubble1 = document.getElementById("robot-text");
+      const bubble2 = document.getElementById("robot-text-2");
+      const bubble3 = document.getElementById("robot-text-3");
+      const robotText = "Ciao! Sono il Robot personale di Alessio!";
+      const robotText2 = "Alessio è un cyber security analyst, penetration tester ed Osint investigator!";
+      const robotText3 = "su Portfolio vedrai tutta la sua dedizione!\nsu Linkedin potrai entrare in contatto con lui!";
+
+      if (!bubble1 || !bubble2 || !bubble3) return;
+
+      let i = 0;
+      function typeBubble1() {
+        if (i < robotText.length) {
+          bubble1.textContent += robotText.charAt(i);
+          i++;
+          setTimeout(typeBubble1, 50);
+        } else {
+          setTimeout(() => {
+            bubble1.textContent = "";
+            bubble1.style.display = "none";
+            bubble2.style.display = "block";
+            bubble2.textContent = "";
+            let j = 0;
+            function typeBubble2() {
+              if (j < robotText2.length) {
+                bubble2.textContent += robotText2.charAt(j);
+                j++;
+                setTimeout(typeBubble2, 40);
+              } else {
+                setTimeout(() => {
+                  bubble2.textContent = "";
+                  bubble2.style.display = "none";
+                  bubble3.style.display = "block";
+                  bubble3.textContent = "";
+                  let k = 0;
+                  function typeBubble3() {
+                    if (k < robotText3.length) {
+                      bubble3.textContent += robotText3.charAt(k);
+                      k++;
+                      setTimeout(typeBubble3, 40);
+                    }
+                  }
+                  typeBubble3();
+                }, 5000);
+              }
+            }
+            typeBubble2();
+          }, 5000);
+        }
+      }
+      typeBubble1();
+    }, 2000);
+  </script>
+</body>
+</html>
